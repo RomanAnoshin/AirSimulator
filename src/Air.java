@@ -1,13 +1,14 @@
 /**
  * Created by Роман on 23.03.2017.
  */
+
 import javax.swing.*;
 import java.awt.*;
 import Panel.*;
 
 public class Air {
 
-    public static void createWindow (){
+    private static void createWindow (){
         JFrame.setDefaultLookAndFeelDecorated(true);
         final JFrame frame = new JFrame("Air Simulator");
         frame.setPreferredSize(getDimension());
@@ -26,8 +27,12 @@ public class Air {
     private static JPanel createPanel(){
       MainPanel  mPanel=new MainPanel();
       mPanel.add(new WorkingPanel(
-              (int)(Toolkit.getDefaultToolkit().getScreenSize().width*0.8),
-              (int)(Toolkit.getDefaultToolkit().getScreenSize().height*1)
+             (Toolkit.getDefaultToolkit().getScreenSize().width),
+              (Toolkit.getDefaultToolkit().getScreenSize().height)
+      ));
+      mPanel.add(new ToolsPanel(
+              (Toolkit.getDefaultToolkit().getScreenSize().width),
+             (Toolkit.getDefaultToolkit().getScreenSize().height)
       ));
         return mPanel;
     }
