@@ -1,5 +1,5 @@
 /**
- * Created by Роман on 23.03.2017.
+ * Created by RomanAnoshin
  */
 
 import javax.swing.*;
@@ -25,15 +25,16 @@ public class Air {
     }
 
     private static JPanel createPanel(){
-      MainPanel  mPanel=new MainPanel();
-      mPanel.add(new WorkingPanel(
-             (Toolkit.getDefaultToolkit().getScreenSize().width),
-              (Toolkit.getDefaultToolkit().getScreenSize().height)
-      ));
-      mPanel.add(new ToolsPanel(
-              (Toolkit.getDefaultToolkit().getScreenSize().width),
-             (Toolkit.getDefaultToolkit().getScreenSize().height)
-      ));
+        MainPanel  mPanel=new MainPanel();
+        WorkingPanel workingPanel=new WorkingPanel(
+                (Toolkit.getDefaultToolkit().getScreenSize().width),
+                (Toolkit.getDefaultToolkit().getScreenSize().height)
+        );
+        mPanel.add(workingPanel);
+        mPanel.add(new ToolsPanel(
+                (Toolkit.getDefaultToolkit().getScreenSize().width),
+                (Toolkit.getDefaultToolkit().getScreenSize().height)
+        ));
         return mPanel;
     }
 
@@ -47,8 +48,6 @@ public class Air {
         if (frameSize.width > screenSize.width) {
             frameSize.width = screenSize.width;
         }
-       // frame.setLocation((screenSize.width-frameSize.width) / 2,     //выравнивает frame по центру
-       //         (screenSize.height-frameSize.height) / 2);            //
     }
 
     public static void main(String[] args)
