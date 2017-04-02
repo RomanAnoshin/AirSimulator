@@ -14,7 +14,7 @@ public class Air {
         frame.setPreferredSize(getDimension());
         setCenterPosition(frame);
         frame.pack();
-        frame.setLayout(null);
+        frame.getContentPane().setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(new WorkingPanel(
                 (Toolkit.getDefaultToolkit().getScreenSize().width),
@@ -24,6 +24,7 @@ public class Air {
                 (Toolkit.getDefaultToolkit().getScreenSize().width),
                 (Toolkit.getDefaultToolkit().getScreenSize().height)
         ));
+
         frame.setSize(getDimension());
         //frame.setResizable(false);//  возможность изменить размер окна
         frame.setLocationRelativeTo(null);

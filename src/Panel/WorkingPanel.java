@@ -38,7 +38,7 @@ public class WorkingPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D)g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setColor(Color.blue);
+        g2d.setColor(Color.darkGray);
         int x0=0,y0=0;
         for (AirPoint point : coordinatePoints) {
             //addComponent(point);
@@ -48,10 +48,7 @@ public class WorkingPanel extends JPanel {
             x0=point.getX();
             y0=point.getY();
         }
-
     }
-
-
 
     public class MouseHandler extends MouseAdapter {
         @Override
