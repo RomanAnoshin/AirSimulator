@@ -14,31 +14,25 @@ public class Air {
         frame.setPreferredSize(getDimension());
         setCenterPosition(frame);
         frame.pack();
-        frame.setVisible(true);
+        frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(createPanel());
-
+        frame.getContentPane().add(new WorkingPanel(
+                (Toolkit.getDefaultToolkit().getScreenSize().width),
+                (Toolkit.getDefaultToolkit().getScreenSize().height)
+        ));
+        frame.getContentPane().add(new ToolsPanel(
+                (Toolkit.getDefaultToolkit().getScreenSize().width),
+                (Toolkit.getDefaultToolkit().getScreenSize().height)
+        ));
+        frame.setSize(getDimension());
+        //frame.setResizable(false);//  возможность изменить размер окна
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
     private static Dimension getDimension(){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         return screenSize;
     }
-
-    private static JPanel createPanel(){
-        MainPanel  mPanel=new MainPanel();
-        WorkingPanel workingPanel=new WorkingPanel(
-                (Toolkit.getDefaultToolkit().getScreenSize().width),
-                (Toolkit.getDefaultToolkit().getScreenSize().height)
-        );
-        mPanel.add(workingPanel);
-        mPanel.add(new ToolsPanel(
-                (Toolkit.getDefaultToolkit().getScreenSize().width),
-                (Toolkit.getDefaultToolkit().getScreenSize().height)
-        ));
-        return mPanel;
-    }
-
-
     private static void setCenterPosition(JFrame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = frame.getPreferredSize();
