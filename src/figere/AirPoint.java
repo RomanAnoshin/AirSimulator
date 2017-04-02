@@ -7,11 +7,13 @@ import java.awt.geom.Ellipse2D;
 /**
  * Created by Роман on 26.03.2017.
  */
-public class AirPoint extends JComponent {
+public class AirPoint extends JButton {
     private int x, y, h;
     private int numberPoint = 0;
 
     public AirPoint() {
+        setSize(new Dimension(6,6));
+        setPreferredSize(new Dimension(6,6));
         this.h = 10000;
         this.x = 0;
         this.y = 0;
@@ -57,12 +59,30 @@ public class AirPoint extends JComponent {
     public  void setNumberPoint(int numberPoint){
         this.numberPoint=numberPoint;
     }
+
     @Override
     protected void paintComponent(Graphics g) {
-        //super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D)g;
-        g2d.setColor(Color.blue);
-        g2d.setClip(new Ellipse2D.Float(getX(), getY(), 6, 6));
-        g2d.fill(new Ellipse2D.Float(getX(), getY(), 6, 6));
+        Graphics2D g2 = (Graphics2D)g.create();
+        g2.setPaint(Color.BLACK);
+        g2.setPaint(new GradientPaint(
+                new Point(0, 0),
+                Color.BLUE,
+                new Point(0, getHeight()),
+                Color.PINK.darker()));
+        g2.fillOval(0,0,
+                (int)(getSize().width), (int)(getSize().height));
+        g2.dispose();
+        Shape shape = new Ellipse2D.Float(0,0,
+                (int)(getSize().width), (int)(getSize().height));
+        g2.setClip(shape);
+        super.paintComponent(g2);
     }
+    protected void paintBorder(Graphics g)
+    {/*
+        g.setColor(Color.GREEN);
+        g.drawOval(0-(getSize().width)/2,0-(getSize().height-1)/2,
+                (int)(getSize().width), (int)(getSize().height-1));*/
+    }
+
+
 }
