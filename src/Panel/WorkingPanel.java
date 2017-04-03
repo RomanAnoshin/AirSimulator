@@ -26,7 +26,7 @@ public class WorkingPanel extends JPanel {
         MouseHandler mhandler=new MouseHandler();
         addMouseListener(mhandler);
         addMouseMotionListener(mhandler);
-        coordinatePoints= new ArrayList<>();
+        coordinatePoints= new ArrayList();
     }
 
     public void addComponent(AirPoint point){
@@ -56,6 +56,7 @@ public class WorkingPanel extends JPanel {
             AirPoint point=new AirPoint(e.getX(),e.getY(),count());
             coordinatePoints.add(point);
             addComponent(point);
+            ToolsPanel.jcbAirPoint.addItem(point.getNumberPoint());
             repaint(0);
         }
 

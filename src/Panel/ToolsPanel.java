@@ -1,16 +1,21 @@
 package Panel;
 
+import figere.AirPoint;
+
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * Created by Роман on 23.03.2017.
  */
 public class ToolsPanel extends JPanel {
+
+    public static JComboBox jcbAirPoint=new JComboBox();;
+    public static java.util.List<AirPoint> coordinatePoints;
     private int count=0;
     private int w,h;
 
@@ -23,7 +28,13 @@ public class ToolsPanel extends JPanel {
         setLocation((int)(w*0.8-3), 0);
         setSize((int)(w*0.2-6),h-33);
         setOpaque(true);
+        coordinatePoints= new ArrayList<>();
         add(createReferenceObject());
+    }
+    public  void addPoint(AirPoint point){
+        coordinatePoints.add(point);
+        jcbAirPoint.addItem(point.getNumberPoint());
+        repaint();
     }
 
     private JPanel createReferenceObject(){
@@ -56,7 +67,7 @@ public class ToolsPanel extends JPanel {
         labelNumberPoint.setSize(60,20);
         labelNumberPoint.setLocation(30,70);
 
-        JComboBox jcbAirPoint=new JComboBox();// выпадающей список для выбора эталонной воздушной точки
+        // выпадающей список для выбора эталонной воздушной точки
         jcbAirPoint.setLocation(90,70);
         jcbAirPoint.setPreferredSize(new Dimension(100,20));
         jcbAirPoint.setSize(100,20);
